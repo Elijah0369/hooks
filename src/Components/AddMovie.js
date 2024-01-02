@@ -28,27 +28,30 @@ export default function AddMovie({ movies, setMovies }) {
     const [addDescription, setAddDescription] = useState("")
     const [addPosterUrl, setAddPosterUrl] = useState("")
     const [addRating, setAddRating] = useState(0)
+    const [addTrailer, setAddTrailer] = useState("")
 
     const AddMovieFunction = () => {
-        if(addTitle==="" || addDescription==="" || addPosterUrl==="" || addRating===0) {
+        if (addTitle === "" || addDescription === "" || addPosterUrl === "" || addRating === 0) {
             alert("All fields are required")
         } else {
-        setMovies([
-            ...movies,
-            {
-                id: Math.random(),
-                title: addTitle,
-                description: addDescription,
-                posterUrl: addPosterUrl,
-                rating: addRating,
-            }
-        ])
-        setAddTitle("")
-        setAddDescription("")
-        setAddPosterUrl("")
-        setAddRating(0)
-        handleClose()
-    }}
+            setMovies([
+                ...movies,
+                {
+                    id: Math.random(),
+                    title: addTitle,
+                    description: addDescription,
+                    posterUrl: addPosterUrl,
+                    rating: addRating,
+                    trailer: addTrailer
+                }
+            ])
+            setAddTitle("")
+            setAddDescription("")
+            setAddPosterUrl("")
+            setAddRating(0)
+            handleClose()
+        }
+    }
 
     return (
         <div>
@@ -78,6 +81,12 @@ export default function AddMovie({ movies, setMovies }) {
                         variant="filled"
                         fullWidth
                         onChange={(e) => setAddPosterUrl(e.target.value)} />
+                    <TextField
+                        label="Embed Trailer"
+                        variant="filled"
+                        fullWidth
+                        onChange={(e) => 
+                        setAddTrailer(e.target.value)} />
                     <Rating
                         name="simple-controlled"
                         value={addRating}

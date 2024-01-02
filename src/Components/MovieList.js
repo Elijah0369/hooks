@@ -1,6 +1,7 @@
 import React from 'react'
 import MovieCard from './MovieCard'
 import AddMovie from './AddMovie'
+import { Link } from 'react-router-dom'
 
 const MovieList = ({movies, filterTitle, filterRating, setMovies}) => {
     return (
@@ -16,7 +17,9 @@ const MovieList = ({movies, filterTitle, filterRating, setMovies}) => {
             movie.rating >= filterRating
            )
            .map(movie => {
-            return <MovieCard Key={movie.id} movie={movie}/>
+            return <Link to={movie.title}>
+             <MovieCard Key={movie.id} movie={movie}/>
+             </Link>
            })}
         </div>
     </div>   
